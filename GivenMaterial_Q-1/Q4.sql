@@ -1,0 +1,9 @@
+USE [PE_DBI202]
+GO
+
+SELECT
+    Lname,
+    Fname
+FROM EMPLOYEE 
+
+WHERE Salary > (SELECT MAX (Salary) FROM EMPLOYEE WHERE Dno = 5);
