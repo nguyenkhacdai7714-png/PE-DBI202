@@ -1,10 +1,14 @@
-SELECT E.Ssn AS [Only Stafford not Houston] FROM EMPLOYEE E
-WHERE EXISTS (
-SELECT * FROM  WORKS_ON INNER JOIN PROJECT ON Pno = Pnumber
-WHERE Essn =  Ssn AND  Plocation = 'Stafford')
-AND NOT EXISTS (
-SELECT * FROM  WORKS_ON INNER JOIN PROJECT ON Pno = Pnumber
-WHERE Essn =  Ssn AND  Plocation = 'Houston')
 
-
-
+CREATE TRIGGER T2 ON order_items AFTER DELETE AS
+BEGIN
+SELECT 
+deleted.order_id,
+o.order_date,
+o.status,
+deleted.product_id,
+products.product_name,
+deleted.quantity
+FROM deleted
+INNER JOIN orders o ON deleted.order_id = o.order_id
+INNER JOIN products ON deleted.product_id =  products.product_id;
+END;

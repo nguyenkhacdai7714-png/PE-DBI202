@@ -1,15 +1,16 @@
-SELECT Dname AS Dname FROM DEPARTMENT
-WHERE EXISTS (
-SELECT * FROM PROJECT 
-WHERE Dnum = Dnumber AND Plocation = 'Houston')
-AND NOT EXISTS (
-SELECT * FROM PROJECT 
-WHERE Dnum = Dnumber AND Plocation = 'HCM')
-
-
-
-
-
-
+SELECT
+    s.staff_id,
+    s.first_name,
+    s.last_name,
+    s.email,
+    s.manager_id,
+    st.store_id,
+    st.store_name
+FROM staffs s
+INNER JOIN stores st ON s.store_id = st.store_id
+WHERE NOT EXISTS (
+    SELECT * FROM orders o
+    WHERE o.staff_id = s.staff_id
+);
 
 

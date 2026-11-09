@@ -1,5 +1,5 @@
 UPDATE EMPLOYEE
-SET Salary = Salary  + (Salary * 10 / 100)
+SET Salary = Salary*1.1
 WHERE EXISTS (
     SELECT *
     FROM DEPENDENT D

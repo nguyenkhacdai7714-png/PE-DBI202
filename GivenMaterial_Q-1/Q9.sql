@@ -1,9 +1,4 @@
-CREATE TRIGGER tr_no_delete ON DEPENDENT
-INSTEAD OF DELETE AS
-BEGIN
-    SELECT 'no delete' AS [the result];
+CREATE TRIGGER tr_no_delete ON order_items INSTEAD OF DELETE AS
+BEGIN 
+SELECT 'no delete' AS [the result];
 END;
-
-
---CREATE TRIGGER tên_trigger ON tên_bảng
---INSTEAD OF DELETE/UPDATE/INSERT AS

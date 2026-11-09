@@ -1,5 +1,12 @@
-SELECT D.Dname AS department,
-AVG(E.Salary) AS [average salary]	
-FROM DEPARTMENT D
-INNER JOIN EMPLOYEE E ON D.Dnumber= E.Dno
-GROUP BY D.Dname
+SELECT
+    customer_id,
+    first_name,
+    last_name,
+    city,
+    state
+FROM customers
+WHERE (last_name LIKE 'A%' OR last_name LIKE 'O%') 
+AND (state = 'CA' OR state = 'NY')
+ORDER BY
+state ASC, 
+customer_id ASC;
